@@ -6,6 +6,7 @@ import java.util.Stack;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -14,6 +15,7 @@ import com.zensar.olxmaster.entity.Status;
 
 
 @RestController
+@RequestMapping(value="/advertise")
 public class MyController {
 	
 	static List<Category> categories= new ArrayList<Category>();
@@ -32,12 +34,12 @@ public class MyController {
 		status.add(new Status(2L, "CLOSED"));
 	}
 	
-	@GetMapping(value="/advertise/category",produces = {MediaType.APPLICATION_XML_VALUE ,MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="/category",produces = {MediaType.APPLICATION_XML_VALUE ,MediaType.APPLICATION_JSON_VALUE})
 	public List<Category> getAllAdvertisementCategories() {
 		return categories;
 	}
 	
-	@GetMapping(value="/advertise/status",produces = {MediaType.APPLICATION_XML_VALUE ,MediaType.APPLICATION_JSON_VALUE})
+	@GetMapping(value="/status",produces = {MediaType.APPLICATION_XML_VALUE ,MediaType.APPLICATION_JSON_VALUE})
 	public List<Status> getAllAdvertisementStatus(){
 		return status;
 	}
